@@ -153,7 +153,7 @@ print("Decision Tree:")
 print(model.score(test_samples, test_labels))
 
 # ---- Multi-layer Perceptron ----
-# clf = MLPClassifier(solver='lbfgs', alpha=1e-3, hidden_layer_sizes=(22, 18), random_state=1)
+# clf = MLPClassifier(solver='lbfgs', alpha=1e-2, hidden_layer_sizes=(22, 18), random_state=1)
 # clf.fit(training_samples, training_labels)
 # print("Multi-layer Perceptron:")
 # print(clf.score(test_samples, test_labels))
