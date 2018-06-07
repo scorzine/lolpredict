@@ -1,6 +1,6 @@
 import csv, re, operator
 import numpy as np
-from sklearn.naive_bayes import GaussianNB
+from sklearn.naive_bayes import GaussianNB, MultinomialNB, BernoulliNB
 from sklearn.neural_network import MLPClassifier
 from sklearn import tree
 
@@ -140,11 +140,23 @@ training_labels = labels[:136896]
 test_samples = samples[136896:]
 test_labels = labels[136896:]
 
-# ---- Naive Bayes ----
-# model=GaussianNB()
-# model.fit(training_samples,training_labels)
-# print("Naive Bayes:")
-# print(model.score(test_samples, test_labels))
+# ---- Gaussian Naive Bayes ----
+model=GaussianNB()
+model.fit(training_samples,training_labels)
+print("Gaussian Naive Bayes:")
+print(model.score(test_samples, test_labels))
+
+# ---- Multinomial Naive Bayes ----
+model=MultinomialNB()
+model.fit(training_samples,training_labels)
+print("Multinomial Naive Bayes:")
+print(model.score(test_samples, test_labels))
+
+# ---- Bernoulli Naive Bayes ----
+model=BernoulliNB()
+model.fit(training_samples,training_labels)
+print("Bernoulli Naive Bayes:")
+print(model.score(test_samples, test_labels))
 
 # ---- Decision Tree ----
 model=tree.DecisionTreeClassifier()
@@ -153,10 +165,10 @@ print("Decision Tree:")
 print(model.score(test_samples, test_labels))
 
 # ---- Multi-layer Perceptron ----
-# clf = MLPClassifier(solver='lbfgs', alpha=1e-2, hidden_layer_sizes=(22, 18), random_state=1)
-# clf.fit(training_samples, training_labels)
-# print("Multi-layer Perceptron:")
-# print(clf.score(test_samples, test_labels))
+clf = MLPClassifier(solver='lbfgs', alpha=1e-3, hidden_layer_sizes=(22, 18), random_state=1)
+clf.fit(training_samples, training_labels)
+print("Multi-layer Perceptron:")
+print(clf.score(test_samples, test_labels))
 
 
 
