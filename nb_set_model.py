@@ -1,4 +1,4 @@
-import csv, re, operator
+import csv, re, operator, graphviz
 import numpy as np
 from sklearn.naive_bayes import GaussianNB, MultinomialNB, BernoulliNB
 from sklearn.neural_network import MLPClassifier
@@ -101,3 +101,9 @@ clf = MLPClassifier(solver='lbfgs', alpha=1e-3, hidden_layer_sizes=(22, 18), ran
 clf.fit(training_samples, training_labels)
 print("Multi-layer Perceptron:")
 print(clf.score(test_samples, test_labels))
+
+# ---- Decision Tree Graph export ----
+dot_data = tree.export_graphviz(model, out_file=None)
+graph = graphviz.Source(dot_data)
+graph.gormat = "pdf"
+graph.render()
